@@ -18,13 +18,13 @@ module.exports = {
   dev: {
     ...sqlite,
     connection: {
-      filename: "./data/zoos-dev.db3",
+      filename: "./data/zoosDev.db3",
     },
   },
   test: {
     ...sqlite,
     connection: {
-      filename: "./data/zoos-test.db3",
+      filename: "./data/zoosTest.db3",
     },
   },
 };
