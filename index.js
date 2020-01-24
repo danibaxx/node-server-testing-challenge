@@ -21,3 +21,18 @@ server.post((req, res, next) => {
 server.delete((req, res, next) => {
 
 });
+
+server.use((err, req, res, next) => {
+  console.log('Error:', err)
+  res.status(500).json({
+    message: 'Something went wrong'
+  })
+});
+
+if (!module.parent) {
+  server.listen(port, () => {
+    console.log(`\n** Server is running http://localhost:${port} \n`)
+  })
+};
+
+module.exports = server;
