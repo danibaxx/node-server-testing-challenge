@@ -1,30 +1,38 @@
 const db = require('../data/db-config');
 
 function find() {
-  return null
+  return db('characters')
 };
 
 function findById(id) {
-  return null
+  return db('characters')
+    .where({ id })
+    .first()
 };
 
-function add(character) {
-  return null
+async function insert(character) {
+  const [id] = await db('characters').insert(character)
+  return findById(id)
 };
 
-function update(id, update) {
-  return null
+async function update(id, changes) {
+  await db('characters')
+  .where({ id })
+  .update(changes)
+
+  return findById(id)
 };
 
 function remove(id) {
-  return null
+  return db('characters')
+    .where({ id })
+    .del()
 };
 
 module.exports = {
   find,
   findById,
-  add,
+  insert,
   update,
   remove,
-
 }
